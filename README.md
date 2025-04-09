@@ -1,6 +1,4 @@
-# Smart_Prediction_of_Mental_Outcomes
-
-SMART PREDICTION OF MENTAL HEALTH
+# SMART PREDICTION OF MENTAL HEALTH
 
 Overview – This project aims to build a Mental Health Sentiment Analysis Model to analyze how lifestyle changes, social dynamics, and personal history influence mental health outcomes.
 
