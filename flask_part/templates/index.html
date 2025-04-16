@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('/static/stress.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #1a3c6d;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 400;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        label::before {
+            content: '➤';
+            margin-right: 5px;
+            color: #007bff;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #e9f5ff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 400;
+            display: block;
+            margin: 20px auto;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .prediction, .error {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            animation: slideIn 0.3s ease-in;
+        }
+        .prediction {
+            color: #1a3c6d;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .prediction.yes {
+            background-color: #fff3e0;
+            color: #e67e22;
+        }
+        .prediction.no {
+            background-color: #e6ffed;
+            color: #28a745;
+        }
+        .error {
+            color: #d32f2f;
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .loading {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        .info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info a:hover {
+            text-decoration: underline;
+        }
+        .disclaimer {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+        canvas {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .form-container {
+                padding: 15px;
+                max-width: 100%;
+            }
+            select, button {
+                font-size: 0.9em;
+            }
+            canvas {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mental Health Treatment Prediction</h1>
+    
+    <div class="form-container" role="region" aria-label="Prediction form">
+        <form id="prediction-form" action="/predict" method="POST">
+            {% for feature, options in feature_options.items() %}
+            <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}</label>
+            <select name="{{ feature }}" id="{{ feature }}" required aria-required="true">
+                <option value="" disabled selected>Select an option</option>
+                {% for option in options %}
+                <option value="{{ option }}"
+                    {% if user_input is not none and user_input[feature] == option %}
+                        selected
+                    {% endif %}>
+                    {{ option }}
+                </option>
+                {% endfor %}
+            </select>
+            {% endfor %}
+            <button type="submit" id="predict-button">Predict</button>
+        </form>
+        <div class="loading" id="loading-spinner"></div>
+        <div class="info">
+            <a href="https://www.mentalhealth.gov" target="_blank">Learn about mental health</a>
+        </div>
+    </div>
+    
+    {% if prediction is not none %}
+    <div class="prediction {{ 'yes' if prediction == 'Yes' else 'no' }}"
+         role="alert" aria-live="polite">
+        <strong>Prediction:</strong> 
+        {% if prediction == 'Yes' %}
+            Treatment is likely needed.
+        {% else %}
+            Treatment may not be needed.
+        {% endif %}
+    </div>
+    <canvas id="predChart"></canvas>
+    {% endif %}
+    
+    {% if error is not none %}
+    <div class="error" role="alert" aria-live="polite">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+    
+    <p class="disclaimer">
+        Predictions are for informational purposes only and not a substitute for professional medical advice.
+    </p>
+
+    <script>
+        const form = document.getElementById('prediction-form');
+        const button = document.getElementById('predict-button');
+        const spinner = document.getElementById('loading-spinner');
+
+        form.addEventListener('submit', () => {
+            button.disabled = true;
+            button.textContent = 'Predicting...';
+            spinner.style.display = 'block';
+        });
+
+        {% if prediction is not none %}
+        new Chart(document.getElementById('predChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Treatment Needed'],
+                datasets: [{
+                    label: 'Likelihood',
+                    data: [{% if prediction == 'Yes' %}80{% else %}20{% endif %}],
+                    backgroundColor: '{{ 'Yes' if prediction == 'Yes' else 'No' }}' === 'Yes' ? '#e67e22' : '#28a745'
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+        {% endif %}
+    </script>
+</body>
+</html>
