@@ -15,15 +15,15 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url('/static/stress.jpg');
+            background-image: url('/static/mentalheatlh1.jpg');
             background-size: cover;
-            background-position: center;
             background-attachment: fixed;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            height: 100vh;
             padding: 20px;
+            flex-wrap: wrap;
         }
         h1 {
             color: #1a3c6d;
@@ -31,6 +31,8 @@
             font-weight: 600;
             margin-bottom: 20px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-align: center;
         }
         .form-container {
             background-color: rgba(255, 255, 255, 0.95);
@@ -40,6 +42,13 @@
             max-width: 600px;
             width: 100%;
             animation: fadeIn 0.5s ease-in;
+            flex: 1;
+            max-width: 45%;
+        }
+        .prediction-container {
+            flex: 1;
+            max-width: 45%;
+            padding: 20px;
         }
         label {
             display: block;
@@ -159,13 +168,17 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-container, .prediction-container {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
             h1 {
                 font-size: 1.8em;
-            }
-            .form-container {
-                padding: 15px;
-                max-width: 100%;
             }
             select, button {
                 font-size: 0.9em;
@@ -176,6 +189,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Mental Health Treatment Prediction</h1>
     
@@ -202,29 +216,31 @@
             <a href="https://www.mentalhealth.gov" target="_blank">Learn about mental health</a>
         </div>
     </div>
-    
-    {% if prediction is not none %}
-    <div class="prediction {{ 'yes' if prediction == 'Yes' else 'no' }}"
-         role="alert" aria-live="polite">
-        <strong>Prediction:</strong> 
-        {% if prediction == 'Yes' %}
-            Treatment is likely needed.
-        {% else %}
-            Treatment may not be needed.
+
+    <div class="prediction-container">
+        {% if prediction is not none %}
+        <div class="prediction {{ 'yes' if prediction == 'Yes' else 'no' }}"
+             role="alert" aria-live="polite">
+            <strong>Prediction:</strong> 
+            {% if prediction == 'Yes' %}
+                Treatment is likely needed.
+            {% else %}
+                Treatment may not be needed.
+            {% endif %}
+        </div>
+        <canvas id="predChart"></canvas>
         {% endif %}
+        
+        {% if error is not none %}
+        <div class="error" role="alert" aria-live="polite">
+            <strong>Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+        
+        <p class="disclaimer">
+            Predictions are for informational purposes only and not a substitute for professional medical advice.
+        </p>
     </div>
-    <canvas id="predChart"></canvas>
-    {% endif %}
-    
-    {% if error is not none %}
-    <div class="error" role="alert" aria-live="polite">
-        <strong>Error:</strong> {{ error }}
-    </div>
-    {% endif %}
-    
-    <p class="disclaimer">
-        Predictions are for informational purposes only and not a substitute for professional medical advice.
-    </p>
 
     <script>
         const form = document.getElementById('prediction-form');
