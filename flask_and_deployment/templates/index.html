@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-200 via-green-100 to-blue-200 flex flex-col">
+    <div class="flex-grow flex flex-col md:flex-row items-center justify-center p-4">
+        <!-- Form (Left Side) -->
+        <div class="w-full md:w-1/2 p-4">
+            <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg">
+                <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">Mental Wellness Assessment Tool</h1>
+                <form id="prediction-form" class="space-y-4">
+                    <!-- Where_do_you_live (maps to Country) -->
+                    <div>
+                        <label for="Where_do_you_live" class="block text-sm font-medium text-gray-700">What is your country of residence?</label>
+                        <select name="Where_do_you_live" id="Where_do_you_live" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="India">India</option>
+                            <option value="France">France</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Gender -->
+                    <div>
+                        <label for="Gender" class="block text-sm font-medium text-gray-700">How do you identify your gender?</label>
+                        <select name="Gender" id="Gender" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>     
+                        </select>
+                    </div>
+
+                      <!-- self_employed -->
+                    <div>
+                        <label for="self_employed" class="block text-sm font-medium text-gray-700">Are you self-employed?</label>
+                        <select name="self_employed" id="self_employed" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+
+                    
+                    <!-- Occupation -->
+                    <div>
+                        <label for="Occupation" class="block text-sm font-medium text-gray-700">What is your occupation?</label>
+                        <select name="Occupation" id="Occupation" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Business">Business</option>
+                            <option value="Corporate">Corporate</option>
+                            <option value="Housewife">Housewife</option>
+                            <option value="Student">Student</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Growing Stress -->
+                    <div>
+                        <label for="Growing_Stress" class="block text-sm font-medium text-gray-700">Have you experienced increasing levels of stress in recent weeks or months?</label>
+                        <select name="Growing_Stress" id="Growing_Stress" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Maybe">Maybe</option>
+                        </select>
+                    </div>
+
+                    <!-- Mental_Health_History -->
+                    <div>
+                        <label for="Mental_Health_History" class="block text-sm font-medium text-gray-700">Do you have any history of mental health challenges or treatment?</label>
+                        <select name="Mental_Health_History" id="Mental_Health_History" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Maybe">Maybe</option>
+                        </select>
+                    </div>
+
+                    <!-- Mood Swings -->
+                    <div>
+                        <label for="Mood_Swings" class="block text-sm font-medium text-gray-700">Do you often experience sudden changes in your mood?</label>
+                        <select name="Mood_Swings" id="Social_Weakness" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="High">High</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                        </select>
+                    </div>
+
+
+                    <!-- family_history -->
+                    <div>
+                        <label for="family_history" class="block text-sm font-medium text-gray-700">Do you have a family history of mental health conditions?</label>
+                        <select name="family_history" id="family_history" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                
+                    <!-- mental_health_interview -->
+                    <div>
+                        <label for="mental_health_interview" class="block text-sm font-medium text-gray-700">Have you ever participated in a mental health interview or assessment with a professional, such as a counselor or psychologist?</label>
+                        <select name="mental_health_interview" id="mental_health_interview" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Maybe">Maybe</option>
+                        </select>
+                    </div>
+                    <!-- care_options -->
+                    <div>
+                        <label for="care_options" class="block text-sm font-medium text-gray-700">Do you have access to mental health care options?</label>
+                        <select name="care_options" id="care_options" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Not sure">Not sure</option>
+                        </select>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <p class="text-sm text-gray-700">
+                            <strong>Disclaimer:</strong> This tool provides a prediction based on the information you provide and is not a substitute for professional medical advice, diagnosis, or treatment. Please consult a qualified mental health professional for an accurate assessment and personalized guidance.
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Predict
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Result/Error (Right Side) -->
+        <div class="w-full md:w-1/2 p-4">
+            <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg min-h-[300px] flex items-center justify-center">
+                <div id="result" class="text-center">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Prediction Result</h2>
+                    <p class="text-gray-700">Submit the form to see your prediction.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with External Link -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>Learn more about mental health at <a href="https://www.nimh.nih.gov/health" target="_blank" class="underline hover:text-indigo-300">NIMH</a>.</p>
+    </footer>
+
+    <!-- JavaScript for Dynamic Form Submission -->
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (data.prediction) {
+                    resultDiv.innerHTML = `
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2">Prediction Result</h2>
+                        <p class="text-gray-700">Your predicted need for mental health treatment: <strong>${data.prediction}</strong></p>
+                    `;
+                } else if (data.error) {
+                    resultDiv.innerHTML = `
+                        <h2 class="text-xl font-semibold text-red-600 mb-2">Error</h2>
+                        <p class="text-gray-700">${data.error}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h2 class="text-xl font-semibold text-red-600 mb-2">Error</h2>
+                    <p class="text-gray-700">Failed to fetch prediction: ${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
