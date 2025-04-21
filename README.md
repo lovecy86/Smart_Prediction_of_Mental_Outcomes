@@ -1,6 +1,6 @@
 # **Smart Prediction of Mental Health: Sentiment Analysis Model**
-[Link Text](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/blob/main/Mental_Health_Prediction_in_colab.ipynb)
-
+[Modeling Code](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/blob/main/Mental_Health_Prediction_in_colab.ipynb)
+[Flask and Deployment](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/tree/main/flask_and_deployment)
 ## **Project Overview**
 
 The **Smart Prediction of Mental Health** project aims to create a **Sentiment Analysis Model** to predict mental health outcomes based on lifestyle, personal history, and social factors. By identifying individuals at risk early, healthcare professionals can offer proactive support and intervention.
@@ -44,27 +44,36 @@ To build a tool that helps healthcare professionals identify individuals who may
   - **Deleted duplicates**
 - **Feature Engineering**: 
   - **encoded** categorical variables for Logistic Regression and MLP algorithms.
+  - performed **correlation analysis**  
+
 ![cleaned dataset](images/cleaned_dataset.png)
 
 ### **Exploratory Analysis** - Analyzed the distribution of the target variable and the impact of the target variable on other features
-![treatment Distribution](treatment_distribution.png)
+![treatment Distribution](images/treatment_distribution.png)
 
 ### **Models Used**
 - **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
-![mlp](mlp.png)
+![mlp](images/mlp.png)
+
 - **Logistic Regression**: A basic classification model used as a benchmark to predict whether an individual needs treatment (binary classification).
+![logistic](images/logistic.png)
 
 - **CatBoost**: A gradient boosting model optimized for **categorical features**, providing high performance with less data preprocessing.
-- **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
+![catboost](images/catboost.png)
+
+### **Feature Importance on Catboost Model**: This was done to determine the features that had more effect on the target. 
+![feature_importance](images/feature_importance.png)
 
 ### **Model Evaluation**
-- **Accuracy**: Achieved **78.54%** accuracy using **CatBoost** and **MLP**.
+- **Accuracy**: Achieved **78.63%** accuracy using **CatBoost**.
 - **Precision, Recall, and F1-Score**: Evaluated the model’s ability to predict mental health outcomes correctly, with a focus on minimizing false positives and false negatives.
-- **Key Insights**: Family history, occupation, and lifestyle were found to be significant predictors for mental health treatment needs.
+- **Key Insights**: country, occupation, and family history were found to be significant predictors for mental health treatment needs.
+![final_model](images/final_model.png)
+![confusion_matrix](images/confusion_matrix.png)
 
 ### **Tuning and Optimization**
-- **Hyperparameter Tuning**: Used **Grid Search** and **Random Search** to optimize model hyperparameters and enhance prediction accuracy.
-- **Cross-Validation**: Performed **k-fold cross-validation** to ensure robustness and generalizability of the models.
+- **Hyperparameter Tuning**: Used **feature selection** and **tuning** to optimize model hyperparameters and enhance prediction accuracy.
+
 
 ---
 
@@ -78,7 +87,7 @@ To build a tool that helps healthcare professionals identify individuals who may
 - The Flask application was deployed on **AWS EC2** to ensure scalability and reliable access.
   
 #### **EC2 Deployment Steps**:
-1. **Create EC2 Instance**: Launch a new EC2 instance with Ubuntu as the operating system.
+1. **Create EC2 Instance**: Launch a new EC2 instance with Amazon Linux as the operating system.
 2. **SSH Access**: Connect to the EC2 instance using SSH:
    ```bash
    ssh -i <your-key-pair.pem> ubuntu@<ec2-public-ip>
@@ -103,8 +112,8 @@ To build a tool that helps healthcare professionals identify individuals who may
 
 ## **Key Results**
 
-- **Accuracy**: Achieved **78.54%** accuracy using **CatBoost** and **MLP** models.
-- **Insights**: Key predictors such as **family history**, **occupation**, and **lifestyle** significantly influenced the prediction of mental health treatment needs.
+- **Accuracy**: Achieved **78.63%** accuracy using **CatBoost**. 
+- **Insights**: Key predictors such as **family history**, **occupation**, and **country** significantly influenced the prediction of mental health treatment needs.
 - **Impact**: The model enables **early detection** and supports **proactive intervention** in mental health management.
 
 ---
