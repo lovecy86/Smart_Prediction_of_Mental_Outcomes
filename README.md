@@ -1,4 +1,5 @@
 # **Smart Prediction of Mental Health: Sentiment Analysis Model**
+[Link Text](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/blob/main/Mental_Health_Prediction_in_colab.ipynb)
 
 ## **Project Overview**
 
@@ -19,25 +20,40 @@ To build a tool that helps healthcare professionals identify individuals who may
 ## **Dataset**
 
 - **Source**: Kaggle - [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
-- **Features**:
-  - **Days spent indoors**
-  - **Family history of mental health issues**
+- **Target Variable**
+  - **treatment**
+- **Features (to name a few)**:
+  - **Timestamp**
+  - **Gender**
+  - **Country**
   - **Occupation**
-  - **Mental health status**
-  - **Stress levels**, **mood swings**, and **treatment need**
+  - **self_employed**
+  - **days_indoors**
+  - **mental_health_issues**
+ 
 
 ---
 
 ## **Model Development**
 
 ### **Data Preprocessing**
-- **Data Cleaning**: Handled missing values and outliers using techniques such as **imputation** and **IQR (Interquartile Range)** method.
+- **Data Cleaning**: 
+  - **Handled missing values**
+  - **checked for outliers**
+  - **Dropped timestamp column**
+  - **Deleted duplicates**
 - **Feature Engineering**: 
-  - Selected significant features like **occupation**, **family history**, and **time spent indoors**.
-  - **Normalized** numerical features and **encoded** categorical variables (using **one-hot encoding** and **label encoding**).
+  - **encoded** categorical variables for Logistic Regression and MLP algorithms.
+![cleaned dataset](images/cleaned_dataset.png)
+
+### **Exploratory Analysis** - Analyzed the distribution of the target variable and the impact of the target variable on other features
+![treatment Distribution](treatment_distribution.png)
 
 ### **Models Used**
+- **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
+![mlp](mlp.png)
 - **Logistic Regression**: A basic classification model used as a benchmark to predict whether an individual needs treatment (binary classification).
+
 - **CatBoost**: A gradient boosting model optimized for **categorical features**, providing high performance with less data preprocessing.
 - **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
 
