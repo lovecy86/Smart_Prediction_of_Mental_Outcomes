@@ -38,36 +38,42 @@ To build a tool that helps healthcare professionals identify individuals who may
 
 ### **Data Preprocessing**
 - **Data Cleaning**: 
-  - **Handled missing values**
-  - **checked for outliers**
-  - **Dropped timestamp column**
-  - **Deleted duplicates**
+  - Handled missing values
+  - checked for outliers
+  - Dropped timestamp column
+  - Deleted duplicates
 - **Feature Engineering**: 
   - **encoded** categorical variables for Logistic Regression and MLP algorithms.
   - performed **correlation analysis**  
 
 ![cleaned dataset](images/cleaned_dataset.png)
 
-### **Exploratory Analysis** - Analyzed the distribution of the target variable and the impact of the target variable on other features
+### **Exploratory Analysis** - 
+ Analyzed the distribution of the target variable and the impact of the target variable on other features
 ![treatment Distribution](images/treatment_distribution.png)
 
 ### **Models Used**
 - **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
+
 ![mlp](images/mlp.png)
 
 - **Logistic Regression**: A basic classification model used as a benchmark to predict whether an individual needs treatment (binary classification).
+
 ![logistic](images/logistic.png)
 
 - **CatBoost**: A gradient boosting model optimized for **categorical features**, providing high performance with less data preprocessing.
+
 ![catboost](images/catboost.png)
 
 ### **Feature Importance on Catboost Model**: This was done to determine the features that had more effect on the target. 
+
 ![feature_importance](images/feature_importance.png)
 
 ### **Model Evaluation**
 - **Accuracy**: Achieved **78.63%** accuracy using **CatBoost**.
 - **Precision, Recall, and F1-Score**: Evaluated the model’s ability to predict mental health outcomes correctly, with a focus on minimizing false positives and false negatives.
 - **Key Insights**: country, occupation, and family history were found to be significant predictors for mental health treatment needs.
+
 ![final_model](images/final_model.png)
 ![confusion_matrix](images/confusion_matrix.png)
 
