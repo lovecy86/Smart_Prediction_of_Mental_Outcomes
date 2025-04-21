@@ -2,156 +2,128 @@
 
 ## **Project Overview**
 
-The **Smart Prediction of Mental Health** project aims to build a **Sentiment Analysis Model** that predicts mental health outcomes based on lifestyle factors, social dynamics, and personal history. The model’s objective is to provide actionable insights for healthcare providers and employers to help identify individuals at risk of mental health issues and offer tailored support.
+The **Smart Prediction of Mental Health** project aims to create a **Sentiment Analysis Model** to predict mental health outcomes based on lifestyle, personal history, and social factors. By identifying individuals at risk early, healthcare professionals can offer proactive support and intervention.
 
-By analyzing the relationship between various lifestyle changes (e.g., days spent indoors), social influences (e.g., family history), and occupation, this project offers a predictive tool to forecast mental health conditions like stress, mood swings, and treatment needs.
+### **Goal**:
+To build a tool that helps healthcare professionals identify individuals who may need mental health support early, thereby improving patient outcomes.
+
+### **Stakeholders**:
+- **Psychologists**, **Psychiatrists**, **General Practitioners**, and **Mental Health Counselors**: These professionals can use the tool to prioritize interventions, allocate resources, and improve mental health outcomes.
+
+### **Business Question**:
+- **Who is likely to seek mental health treatment?**  
+  The project predicts the likelihood of an individual needing mental health treatment based on factors like lifestyle, occupation, and family history.
+
+---
 
 ## **Dataset**
 
-This project uses the **Mental Health Dataset** available on Kaggle. The dataset contains various attributes related to an individual’s lifestyle, social history, and mental health status.
+- **Source**: Kaggle - [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
+- **Features**:
+  - **Days spent indoors**
+  - **Family history of mental health issues**
+  - **Occupation**
+  - **Mental health status**
+  - **Stress levels**, **mood swings**, and **treatment need**
 
-- **Dataset URL**: [Mental Health Dataset on Kaggle](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
+---
 
-The dataset includes features such as:
-- **Days spent indoors**
-- **Family history of mental health issues**
-- **Occupation**
-- **Social and personal history**
-- **Mental health status**
+## **Model Development**
 
-## **Project Objectives**
+### **Data Preprocessing**
+- **Data Cleaning**: Handled missing values and outliers using techniques such as **imputation** and **IQR (Interquartile Range)** method.
+- **Feature Engineering**: 
+  - Selected significant features like **occupation**, **family history**, and **time spent indoors**.
+  - **Normalized** numerical features and **encoded** categorical variables (using **one-hot encoding** and **label encoding**).
 
-The primary objective of this project is to develop a **machine learning model** that can predict mental health outcomes using the dataset’s features. The specific goals include:
+### **Models Used**
+- **Logistic Regression**: A basic classification model used as a benchmark to predict whether an individual needs treatment (binary classification).
+- **CatBoost**: A gradient boosting model optimized for **categorical features**, providing high performance with less data preprocessing.
+- **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
 
-1. **Correlating lifestyle factors** (e.g., days spent indoors) with growing stress and mood swings.
-2. **Identifying the influence** of family history of mental health issues on coping mechanisms and mood fluctuations, segmented by gender and occupation.
-3. **Predicting the likelihood** of requiring mental health treatment or experiencing social weakness based on demographic and lifestyle features.
+### **Model Evaluation**
+- **Accuracy**: Achieved **78.54%** accuracy using **CatBoost** and **MLP**.
+- **Precision, Recall, and F1-Score**: Evaluated the model’s ability to predict mental health outcomes correctly, with a focus on minimizing false positives and false negatives.
+- **Key Insights**: Family history, occupation, and lifestyle were found to be significant predictors for mental health treatment needs.
 
-## **Stakeholders**
+### **Tuning and Optimization**
+- **Hyperparameter Tuning**: Used **Grid Search** and **Random Search** to optimize model hyperparameters and enhance prediction accuracy.
+- **Cross-Validation**: Performed **k-fold cross-validation** to ensure robustness and generalizability of the models.
 
-- **Healthcare Providers**: Psychologists, psychiatrists, and general practitioners who can use the predictive insights for early intervention.
-- **HR Departments and Employers**: Organizations can utilize the model to detect employees experiencing mental stress, ensuring they receive timely support.
-- **Mental Health Advocacy Groups**: Organizations focused on raising awareness and providing resources to improve mental health in the workplace and at home.
+---
 
-## **Methodology**
+## **Deployment**
 
-### **1. Data Preprocessing**
+### **Flask Web Application**
+- Developed a **Flask web application** that allows healthcare providers and employers to input real-time data (e.g., occupation, family history) and receive predictions on mental health outcomes.
+- **Flask** was chosen for its simplicity and ease of deployment, creating an interactive interface for end-users.
 
-- **Data Cleaning**: Handle missing data, outliers, and inconsistencies.
-- **Feature Engineering**: Identify the most relevant features that impact mental health outcomes, such as social history, occupation, and stress indicators.
-- **Data Transformation**: Encode categorical variables using one-hot encoding and normalize numerical features for optimal model performance.
+### **AWS EC2 Hosting**
+- The Flask application was deployed on **AWS EC2** to ensure scalability and reliable access.
+  
+#### **EC2 Deployment Steps**:
+1. **Create EC2 Instance**: Launch a new EC2 instance with Ubuntu as the operating system.
+2. **SSH Access**: Connect to the EC2 instance using SSH:
+   ```bash
+   ssh -i <your-key-pair.pem> ubuntu@<ec2-public-ip>
+   ```
+3. **Install Dependencies**:
+   - Install Python and libraries:
+     ```bash
+     sudo apt update
+     sudo apt install python3-pip
+     pip3 install -r requirements.txt
+     ```
+4. **Transfer and Deploy**:
+   - Upload your Flask app to the EC2 instance (using SCP or Git).
+   - Start the Flask app:
+     ```bash
+     python3 app.py
+     ```
+5. **Configure Security**: Ensure the EC2 security group allows traffic on ports 80 (HTTP) or 5000 (Flask default).
+6. **Access Application**: The web application will be accessible via the public IP of the EC2 instance.
 
-### **2. Model Development**
+---
 
-- **Model Selection**: Evaluate various machine learning algorithms such as **Logistic Regression**, **Random Forest**, and **XGBoost** for their effectiveness in predicting mental health outcomes.
-- **Model Training**: Split the data into training and testing sets, train the models, and evaluate their performance using cross-validation.
-- **Hyperparameter Tuning**: Fine-tune the model parameters to improve prediction accuracy and minimize overfitting.
+## **Key Results**
 
-### **3. Model Evaluation**
+- **Accuracy**: Achieved **78.54%** accuracy using **CatBoost** and **MLP** models.
+- **Insights**: Key predictors such as **family history**, **occupation**, and **lifestyle** significantly influenced the prediction of mental health treatment needs.
+- **Impact**: The model enables **early detection** and supports **proactive intervention** in mental health management.
 
-- **Performance Metrics**: Assess model performance using metrics such as accuracy, precision, recall, and F1-score.
-- **Feature Importance**: Use model explainability techniques (e.g., SHAP values) to understand the impact of individual features on predictions.
+---
 
-### **4. Flask Deployment**
+## **Future Work**
 
-- The final model will be deployed as a **Flask web application**. This allows healthcare providers and employers to input real-time data and get predictions on mental health outcomes.
+- **Integration with Wearable Data**:  
+  - Incorporate real-time health data from wearable devices (e.g., Fitbit, Apple Watch) to enhance the model’s predictive accuracy. This would allow for continuous monitoring of individuals' physical and mental health, providing more personalized and timely predictions for mental health interventions.
 
-#### **Flask Application Endpoints**
-- **POST /predict**: Accepts user input data (lifestyle, social history, etc.) and returns the predicted mental health outcome (e.g., stress, mood swings, treatment need).
+---
 
-## **Technologies Used**
+## **Installation**
 
-- **Programming Language**: Python 3.7+
-- **Libraries**:
-  - **Pandas**, **NumPy** for data manipulation.
-  - **Scikit-learn** for machine learning algorithms and evaluation.
-  - **XGBoost**, **Logistic Regression**, **Random Forest** for classification.
-  - **Flask** for web deployment.
-  - **Matplotlib**, **Seaborn** for data visualization.
-
-## **Installation and Setup**
-
-### Clone the Repository
+To run this project locally, clone the repository and install the required dependencies:
 
 ```bash
 git clone <repository_url>
 cd <repository_folder>
-```
-
-### Install Dependencies
-
-Make sure you have **Python 3.7+** installed. Then, install the required libraries via pip:
-
-```bash
 pip install -r requirements.txt
 ```
 
-### Run the Application
-
-To run the Flask application locally:
+### **Run the Application**
+To start the Flask application, run:
 
 ```bash
 python app.py
 ```
 
-The app will be hosted on `http://127.0.0.1:5000/` where you can interact with the model.
-
-## **Cloud Deployment on AWS (Elastic Beanstalk)**
-
-### **Set Up AWS Elastic Beanstalk**
-
-1. **Sign Up for AWS**: If you don't have an AWS account, create one at [AWS](https://www.aws.amazon.com/).
-2. **Install AWS CLI**: Download and install the AWS CLI from [here](https://aws.amazon.com/cli/).
-3. **Install Elastic Beanstalk CLI**: Follow the guide to install the Elastic Beanstalk CLI (EB CLI): [Elastic Beanstalk CLI Installation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
-
-### **Steps to Deploy on AWS**
-
-1. **Initialize Elastic Beanstalk**:
-   Inside your project folder, initialize your Elastic Beanstalk application:
-
-   ```bash
-   eb init -p python-3.x flask-app
-   ```
-
-   Replace `flask-app` with your desired app name.
-
-2. **Create an Elastic Beanstalk Environment**:
-   Create an environment for your app:
-
-   ```bash
-   eb create flask-app-env
-   ```
-
-   This command will create an Elastic Beanstalk environment and configure the necessary resources for hosting your app.
-
-3. **Deploy the Application**:
-   Deploy your Flask application to AWS:
-
-   ```bash
-   eb deploy
-   ```
-
-4. **Open the Application**:
-   After deployment, you can open your app:
-
-   ```bash
-   eb open
-   ```
-
-   This will launch your Flask app hosted on AWS Elastic Beanstalk.
-
-### **Configuring the Elastic Beanstalk Environment**
-
-Elastic Beanstalk automatically detects your Flask app and configures the environment. However, you might want to add some custom configurations:
-- **Scaling**: Configure auto-scaling based on your expected traffic.
-- **Environment Variables**: Set environment variables like API keys or database credentials via the AWS Management Console.
-
-For larger applications, you may want to integrate AWS services like **RDS** for a database, **S3** for storage, or **CloudWatch** for logging and monitoring.
+The app will be available at `http://127.0.0.1:5000/`.
 
 ---
 
-## **Future Improvements**
+## **Authors**
+- **Dhruvi Yadav**
+- **Bansri Patel**
+- **Lovecy Thomas**
 
-1. **Integration with Wearable Devices**: Incorporate real-time health data from wearable devices (e.g., Fitbit, Apple Watch) to enhance prediction accuracy.
-2. **Enhanced Explainability**: Implement more advanced model interpretability techniques, such as **LIME** (Local Interpretable Model-agnostic Explanations) or **SHAP** (SHapley Additive exPlanations).
-3. **Cloud-based Data Integration**: Host the model on cloud platforms (e.g., AWS, Google Cloud) for scalability and wider access, integrating with other healthcare platforms.
+---
