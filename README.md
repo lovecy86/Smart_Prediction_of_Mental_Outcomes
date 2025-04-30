@@ -29,28 +29,105 @@ The Smart Prediction of Mental Health project addresses the challenge of late de
 - **Sample Size**: 292000 records
 - **Target Variable**: treatment (binary: needs treatment or not).
 - **Key Features**:
+  - Timestamp 
   - Gender
   - Country
   - Occupation
   - Self-employed status
+  - Family History
+  - Growing Stress
+  - Changes Habits
+  - Mood Swings
+  - Coping Struggles
+  - Work Interest
+  - Social Weakness
   - Days indoors
   - Mental health history
-  - 
+  - Care Options
+  - Mental Health Interview
+    
 ---
 
 ## **Project Steps**
 **1. Data Cleaning**
-- Removed duplicates 
-- Removed timestamp column
-- Handled missing values
-- Grouped rare countries
-- Prepared dataset for modeling.
+- Dropped Timestamp due to incomplete monthly data.
+- Removed duplicates and null values.
+- Grouped rare countries (<1,000 counts) into ‘Other’.
+- Reduced dataset to 286808 rows after preprocessing.
 
 ![cleaned dataset](images/cleaned_dataset.png)
 
-### **Exploratory Analysis** - 
- Analyzed the distribution of the target variable and the impact of the target variable on other features
+**2. Exploratory Data Analysis** 
+- Visualized balanced treatment distribution using count plots.
+  
 ![treatment Distribution](images/treatment_distribution.png)
+
+- Analyzed categorical features’ impact on treatment with count plots and hue.
+- Conducted Cramér’s V correlation analysis to identify feature relationships.
+
+**3. Data Preprocessing**
+- Encoded categorical variables using OneHotEncoder for Logistic Regression and MLP.
+- Used LabelEncoder for target variable (Yes/No).
+
+**4. Modeling**
+- Trained Logistic Regression, MLP, and CatBoost models.
+- Split data 80/20 (train/test).
+- Best accuracy: 78.63% (CatBoost with 10 features).
+
+**5. Optimization**
+- Tuned CatBoost hyperparameters (iterations, depth, learning rate)
+- Reduced dimensionality to 10 features and 6 features without accuracy loss.
+- Saved models using pickle for deployment.
+
+**6. Deployment**
+Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for real-time predictions.
+
+## **Model Development**
+### **Models Used**
+  **CatBoost Classifier (Selected):**
+
+
+
+
+
+Achieved 78.63% accuracy with 10 features (iterations=500, depth=6, learning_rate=0.1).
+
+
+
+Optimized for categorical data, tuned with early stopping.
+
+
+
+Reduced noise by focusing on top 10 features.
+
+
+
+MLP (Multi-Layer Perceptron):
+
+
+
+
+
+Used 64-32 hidden layers, achieved moderate accuracy.
+
+
+
+Required encoded features, less effective than CatBoost.
+
+
+
+Logistic Regression:
+
+
+
+
+
+Baseline model with stable performance (~70% accuracy).
+
+
+
+Used encoded features, limited by linear assumptions.
+
 
 ### **Models Used**
 - **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
