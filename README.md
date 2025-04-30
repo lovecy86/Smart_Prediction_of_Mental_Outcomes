@@ -25,22 +25,26 @@ The Smart Prediction of Mental Health project addresses the challenge of late de
 
 ## **Dataset**
 
-- **Source**: Kaggle - [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
-- **Target Variable**
-  - **treatment**
-- **Features (to name a few)**:
-  - **Timestamp**
-  - **Gender**
-  - **Country**
-  - **Occupation**
-  - **self_employed**
-  - **days_indoors**
-  - **mental_health_issues**
- 
-
+- **Source**: Kaggle Mental Health Dataset- [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
+- **Sample Size**: 292000 records
+- **Target Variable**: treatment (binary: needs treatment or not).
+- **Key Features**:
+  - Gender
+  - Country
+  - Occupation
+  - Self-employed status
+  - Days indoors
+  - Mental health history
+  - 
 ---
 
-*  
+## **Project Steps**
+**1. Data Cleaning**
+- Removed duplicates 
+- Removed timestamp column
+- Handled missing values
+- Grouped rare countries
+- Prepared dataset for modeling.
 
 ![cleaned dataset](images/cleaned_dataset.png)
 
