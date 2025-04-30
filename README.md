@@ -84,65 +84,29 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 
 ## **Model Development**
 ### **Models Used**
-  **CatBoost Classifier (Selected):**
+  **CatBoost Classifier (Selected):** 
+    - The reason for initially selecting this model is that it is a gradient boosting machine learning library designed to handle categorical features efficiently.The dataset includes only categorcal features. It uses a combination of ordered boosting, symmetric trees, and a novel approach to encode categorical variables, reducing the need for extensive preprocessing.
+    - Achieved 78.61% accuracy with 15 features (iterations=500, depth=6, learning_rate=0.1).
+
+   ![catboost](images/catboost.png)
+
+  **Logistic Regression:**
+    - Logistic Regression is a baseline model that gave an accuracy of 71%.
+    
+  ![logistic](images/logistic.png)
+    
+
+  **MLP (Multi-Layer Perceptron):**
+    - A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
+    - This model gave an accuracy of 78.58%
+
+  ![mlp](images/mlp.png)
+
+### **Analysis**
+  Among all models catboost model gave a better accuracy (78.61%). Logistic regression model gave very low accuracy. MLP gave almost same accuracy.
 
 
-
-
-
-Achieved 78.63% accuracy with 10 features (iterations=500, depth=6, learning_rate=0.1).
-
-
-
-Optimized for categorical data, tuned with early stopping.
-
-
-
-Reduced noise by focusing on top 10 features.
-
-
-
-MLP (Multi-Layer Perceptron):
-
-
-
-
-
-Used 64-32 hidden layers, achieved moderate accuracy.
-
-
-
-Required encoded features, less effective than CatBoost.
-
-
-
-Logistic Regression:
-
-
-
-
-
-Baseline model with stable performance (~70% accuracy).
-
-
-
-Used encoded features, limited by linear assumptions.
-
-
-### **Models Used**
-- **MLP (Multi-Layer Perceptron)**: A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
-
-![mlp](images/mlp.png)
-
-- **Logistic Regression**: A basic classification model used as a benchmark to predict whether an individual needs treatment (binary classification).
-
-![logistic](images/logistic.png)
-
-- **CatBoost**: A gradient boosting model optimized for **categorical features**, providing high performance with less data preprocessing.
-
-![catboost](images/catboost.png)
-
-### **Feature Importance on Catboost Model**: This was done to determine the features that had more effect on the target. 
+## **Feature Importance on Catboost Model**: This was done to determine the features that had more effect on the target. 
 
 ![feature_importance](images/feature_importance.png)
 
