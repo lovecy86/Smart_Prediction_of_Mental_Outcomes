@@ -11,7 +11,6 @@ A sentiment analysis model to predict mental health treatment needs based on lif
 - [Installation](#installation)
 - [Contributing](#contributing)
 - [Next Steps](#next-steps)
-- [Authors](#authors)
 - [License](#license)
   
 ## **Problem Statement**:
@@ -124,17 +123,20 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 
 ## **Repository Structure**
 
-Smart_Prediction_of_Mental_Outcomes/
-├── images/  # Visualizations (graphs, confusion matrices)
+Smart_Prediction_of_Mental_Health
+
+├── images  # Visualizations (graphs, confusion matrices)
 
 ├── flask_and_deployment/     # Flask app and deployment files
 
 │   ├── app.py
+
 │   └── requirements.txt
 
 ├── Mental_Health_Prediction_in_colab.ipynb  # Modeling notebook
 
 ├── README.md
+
 └── LICENSE
 
 ## **Installation**
