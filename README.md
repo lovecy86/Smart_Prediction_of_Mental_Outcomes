@@ -6,7 +6,7 @@ A sentiment analysis model to predict mental health treatment needs based on lif
 [Flask and Deployment](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/tree/main/flask_and_deployment)
 
 ## **Table of Contents**
-- [Problem Statement](#Problem Statement)
+- [Problem Statement](#problem-statement)
 - Dataset
 Project Steps
 Model Development
