@@ -84,23 +84,23 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 
 ## **Model Development**
 ### **Models Used**
-  **CatBoost Classifier (Selected):** 
+  **1. CatBoost Classifier (Selected):** 
     - The reason for initially selecting this model is that it is a gradient boosting machine learning library designed to handle categorical features efficiently.The dataset includes only categorcal features. It uses a combination of ordered boosting, symmetric trees, and a novel approach to encode categorical variables, reducing the need for extensive preprocessing.
     - Achieved 78.59% accuracy with 15 features (iterations=500, depth=6, learning_rate=0.1).
 
-   ![catboost](images/catboost.png)
+![catboost](images/catboost.png)
 
-  **Logistic Regression:**
+  **2. Logistic Regression:**
     - Logistic Regression is a baseline model that gave an accuracy of 71.3%.
     
-  ![logistic](images/logistic.png)
+![logistic](images/logistic.png)
     
 
-  **MLP (Multi-Layer Perceptron):**
+  **3. MLP (Multi-Layer Perceptron):**
     - A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
     - This model gave an accuracy of 78.32%
 
-  ![mlp](images/mlp.png)
+![mlp](images/mlp.png)
 
 ### **Analysis**
   Among all models catboost model gave a better accuracy (78.59%). Logistic regression model gave very low accuracy. MLP gave almost same accuracy.
@@ -111,7 +111,6 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
   - Therefore, modeling with top 10 and top 6 features were done to determine if feature reduction would affect the accuracy in any way.
 
 ![feature_importance](images/feature_importance.png)
-
 
 ---
 
@@ -130,7 +129,7 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 ## **Repository Structure**
 
 Smart_Prediction_of_Mental_Outcomes/
-├── images/                   # Visualizations (graphs, confusion matrices)
+├── images/  # Visualizations (graphs, confusion matrices)
 ├── flask_and_deployment/     # Flask app and deployment files
 │   ├── app.py
 │   └── requirements.txt
@@ -139,76 +138,34 @@ Smart_Prediction_of_Mental_Outcomes/
 ├── README.md
 └── LICENSE
 
-### **Flask Web Application**
-- Developed a **Flask web application** that allows healthcare providers and employers to input real-time data (e.g., occupation, family history) and receive predictions on mental health outcomes.
-- **Flask** was chosen for its simplicity and ease of deployment, creating an interactive interface for end-users.
-
-### **AWS EC2 Hosting**
-- The Flask application was deployed on **AWS EC2** to ensure scalability and reliable access.
-  
-#### **EC2 Deployment Steps**:
-1. **Create EC2 Instance**: Launch a new EC2 instance with Amazon Linux as the operating system.
-2. **SSH Access**: Connect to the EC2 instance using SSH:
-   ```bash
-   ssh -i <your-key-pair.pem> ubuntu@<ec2-public-ip>
-   ```
-3. **Install Dependencies**:
-   - Install Python and libraries:
-     ```bash
-     sudo apt update
-     sudo apt install python3-pip
-     pip3 install -r requirements.txt
-     ```
-4. **Transfer and Deploy**:
-   - Upload your Flask app to the EC2 instance (using SCP or Git).
-   - Start the Flask app:
-     ```bash
-     python3 app.py
-     ```
-5. **Configure Security**: Ensure the EC2 security group allows traffic on ports 80 (HTTP) or 5000 (Flask default).
-6. **Access Application**: The web application will be accessible via the public IP of the EC2 instance.
-
----
-
-## **Key Results**
-
-- **Accuracy**: Achieved **78.63%** accuracy using **CatBoost**. 
-- **Insights**: Key predictors such as **family history**, **occupation**, and **country** significantly influenced the prediction of mental health treatment needs.
-- **Impact**: The model enables **early detection** and supports **proactive intervention** in mental health management.
-
----
-
-## **Future Work**
-
-- **Integration with Wearable Data**:  
-  - Incorporate real-time health data from wearable devices (e.g., Fitbit, Apple Watch) to enhance the model’s predictive accuracy. This would allow for continuous monitoring of individuals' physical and mental health, providing more personalized and timely predictions for mental health interventions.
-
----
-
 ## **Installation**
+1. Clone the repository
+git clone https://github.com/lovecy86/Smart_Prediction_of_Mental_Health.git
+cd Smart_Prediction_of_Mental_Outcomes
+2. Install dependencies
+pip install -r flask_and_deployment/requirements.txt
+3. Run the Flask app
+python flask_and_deployment/app.py
+4. Access at http://127.0.0.1:5000/
 
-To run this project locally, clone the repository and install the required dependencies:
+## **Prerequisites**
+- Python 3.8+
+- AWS account (for EC2 deployment)
 
-```bash
-git clone <repository_url>
-cd <repository_folder>
-pip install -r requirements.txt
-```
+## **Contributing**
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a feature branch (git checkout -b feature-branch).
+3. Commit changes (git commit -m "Add feature").
+4. Push to the branch (git push origin feature-branch).
+5. Open a pull request.
 
-### **Run the Application**
-To start the Flask application, run:
+## **Next Steps**
+1. Integrate real-time health data from wearable devices (e.g., Fitbit, Apple Watch).
+2. Expand dataset with additional features or larger sample size.
+3. Enhance Flask app for improved user interaction.
 
-```bash
-python app.py
-```
+## **License**
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-The app will be available at `http://127.0.0.1:5000/`.
 
----
-
-## **Authors**
-- **Dhruvi Yadav**
-- **Bansri Patel**
-- **Lovecy Thomas**
-
----
