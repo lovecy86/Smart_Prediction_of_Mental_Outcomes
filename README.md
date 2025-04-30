@@ -1,4 +1,4 @@
-# **Smart Prediction of Mental Health: Sentiment Analysis Model**
+# **Smart Prediction of Mental Health**
 A sentiment analysis model to predict mental health treatment needs based on lifestyle, personal history, and social factors, enabling early intervention for healthcare professionals.
 
 ## **Table of Contents**
