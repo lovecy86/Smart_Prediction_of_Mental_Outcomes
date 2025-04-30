@@ -72,7 +72,7 @@ The Smart Prediction of Mental Health project addresses the challenge of late de
 **4. Modeling**
 - Trained Logistic Regression, MLP, and CatBoost models.
 - Split data 80/20 (train/test).
-- Best accuracy: 78.63% (CatBoost with 10 features).
+- Best accuracy: 78.59% (CatBoost with 10 features).
 
 **5. Optimization**
 - Tuned CatBoost hyperparameters (iterations, depth, learning rate)
@@ -86,45 +86,40 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 ### **Models Used**
   **CatBoost Classifier (Selected):** 
     - The reason for initially selecting this model is that it is a gradient boosting machine learning library designed to handle categorical features efficiently.The dataset includes only categorcal features. It uses a combination of ordered boosting, symmetric trees, and a novel approach to encode categorical variables, reducing the need for extensive preprocessing.
-    - Achieved 78.61% accuracy with 15 features (iterations=500, depth=6, learning_rate=0.1).
+    - Achieved 78.59% accuracy with 15 features (iterations=500, depth=6, learning_rate=0.1).
 
    ![catboost](images/catboost.png)
 
   **Logistic Regression:**
-    - Logistic Regression is a baseline model that gave an accuracy of 71%.
+    - Logistic Regression is a baseline model that gave an accuracy of 71.3%.
     
   ![logistic](images/logistic.png)
     
 
   **MLP (Multi-Layer Perceptron):**
     - A neural network model for capturing deep, complex relationships in the data to improve prediction accuracy.
-    - This model gave an accuracy of 78.58%
+    - This model gave an accuracy of 78.32%
 
   ![mlp](images/mlp.png)
 
 ### **Analysis**
-  Among all models catboost model gave a better accuracy (78.61%). Logistic regression model gave very low accuracy. MLP gave almost same accuracy.
+  Among all models catboost model gave a better accuracy (78.59%). Logistic regression model gave very low accuracy. MLP gave almost same accuracy.
 
 
-## **Feature Importance on Catboost Model**: This was done to determine the features that had more effect on the target. 
+## **Feature Importance on Catboost Model**: 
+  - This was done to determine the features that had more effect on the target.
+  - Therefore, modeling with top 10 and top 6 features were done to determine if feature reduction would affect the accuracy in any way.
 
 ![feature_importance](images/feature_importance.png)
-
-### **Model Evaluation**
-- **Accuracy**: Achieved **78.63%** accuracy using **CatBoost**.
-- **Precision, Recall, and F1-Score**: Evaluated the model’s ability to predict mental health outcomes correctly, with a focus on minimizing false positives and false negatives.
-- **Key Insights**: country, occupation, and family history were found to be significant predictors for mental health treatment needs.
-
-![final_model](images/final_model.png)
-![confusion_matrix](images/confusion_matrix.png)
-
-### **Tuning and Optimization**
-- **Hyperparameter Tuning**: Used **feature selection** and **tuning** to optimize model hyperparameters and enhance prediction accuracy.
 
 
 ---
 
-## **Deployment**
+## **Key Insights**
+- Final model used for deployment is Catboost model with top 10 features - Country, care_options, mental_health_interview, family_history, self_employed, Gender, Growing_Stress, Mental_Health_History, Mood_Swings, Occupation' significantly influence treatment needs.
+- This model enables early detection for proactive intervention.
+
+**Technologies Used**
 
 ### **Flask Web Application**
 - Developed a **Flask web application** that allows healthcare providers and employers to input real-time data (e.g., occupation, family history) and receive predictions on mental health outcomes.
