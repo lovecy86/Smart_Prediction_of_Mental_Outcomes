@@ -130,11 +130,14 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 
 Smart_Prediction_of_Mental_Outcomes/
 ├── images/  # Visualizations (graphs, confusion matrices)
+
 ├── flask_and_deployment/     # Flask app and deployment files
+
 │   ├── app.py
 │   └── requirements.txt
+
 ├── Mental_Health_Prediction_in_colab.ipynb  # Modeling notebook
-├── .gitignore
+
 ├── README.md
 └── LICENSE
 
