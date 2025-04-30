@@ -7,17 +7,17 @@ A sentiment analysis model to predict mental health treatment needs based on lif
 
 ## **Table of Contents**
 - [Problem Statement](#problem-statement)
-- Dataset
-Project Steps
-Model Development
-Technologies Used
-Repository Structure
-Installation
-Contributing
-Next Steps
-Authors
-License
-
+- [Dataset](#dataset)
+- [Project Steps](#project-steps)
+- [Model Development](#model-development)
+- [Technologies Used](#technologies-used)
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Next Steps](#next-steps)
+- [Authors](#authors)
+- [License](#license)
+  
 ## **Problem Statement**:
 The Smart Prediction of Mental Health project addresses the challenge of late detection of mental health issues, which delays critical interventions and strains healthcare resources. By developing a sentiment analysis model, the project predicts the likelihood of individuals needing mental health treatment based on factors such as lifestyle, occupation, and family history. The goal is to enable psychologists, psychiatrists, general practitioners, and mental health counselors to identify at-risk individuals early, prioritize interventions, allocate resources efficiently, and improve patient outcomes through proactive support.
 
