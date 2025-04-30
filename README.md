@@ -169,4 +169,7 @@ Contributions are welcome! Please follow these steps:
 ## **License**
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## **AWS Deployment**
+http://ec2-35-182-98-44.ca-central-1.compute.amazonaws.com:8080/
+
 
