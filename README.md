@@ -25,7 +25,7 @@ The Smart Prediction of Mental Health project addresses the challenge of late de
 
 ## **Dataset**
 
-- **Source**: Kaggle Mental Health Dataset- [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
+- **Source**: [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
 - **Sample Size**: 292000 records
 - **Target Variable**: treatment (binary: needs treatment or not).
 - **Key Features**:
@@ -119,7 +119,25 @@ Deployed the CatBoost model (10 features) on AWS EC2 via a Flask web app for rea
 - Final model used for deployment is Catboost model with top 10 features - Country, care_options, mental_health_interview, family_history, self_employed, Gender, Growing_Stress, Mental_Health_History, Mood_Swings, Occupation' significantly influence treatment needs.
 - This model enables early detection for proactive intervention.
 
-**Technologies Used**
+## **Technologies Used**
+  - Data Processing: Python, pandas, numpy, PySpark
+  - Visualization: matplotlib, seaborn
+  - Machine Learning: scikit-learn, catboost, logistic regression, MLPclassifer
+  - Web Development: Flask
+  - Deployment: AWS EC2
+  - Tools: Jupyter, Google Colab, findspark, pickle
+
+## **Repository Structure**
+
+Smart_Prediction_of_Mental_Outcomes/
+├── images/                   # Visualizations (graphs, confusion matrices)
+├── flask_and_deployment/     # Flask app and deployment files
+│   ├── app.py
+│   └── requirements.txt
+├── Mental_Health_Prediction_in_colab.ipynb  # Modeling notebook
+├── .gitignore
+├── README.md
+└── LICENSE
 
 ### **Flask Web Application**
 - Developed a **Flask web application** that allows healthcare providers and employers to input real-time data (e.g., occupation, family history) and receive predictions on mental health outcomes.
