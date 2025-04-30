@@ -1,5 +1,5 @@
 # **Smart Prediction of Mental Health**
-A sentiment analysis model to predict mental health treatment needs based on lifestyle, personal history, and social factors, enabling early intervention for healthcare professionals.
+A model to predict mental health treatment needs based on lifestyle, personal history, and social factors, enabling early intervention for healthcare professionals.
 
 ## **Table of Contents**
 - [Problem Statement](#problem-statement)
@@ -14,16 +14,16 @@ A sentiment analysis model to predict mental health treatment needs based on lif
 - [License](#license)
   
 ## **Problem Statement**:
-The Smart Prediction of Mental Health project addresses the challenge of late detection of mental health issues, which delays critical interventions and strains healthcare resources. By developing a sentiment analysis model, the project predicts the likelihood of individuals needing mental health treatment based on factors such as lifestyle, occupation, and family history. The goal is to enable psychologists, psychiatrists, general practitioners, and mental health counselors to identify at-risk individuals early, prioritize interventions, allocate resources efficiently, and improve patient outcomes through proactive support.
+The Smart Prediction of Mental Health project addresses the challenge of late detection of mental health issues, which delays critical interventions and strains healthcare resources. By developing a model, the project predicts the likelihood of individuals needing mental health treatment based on factors such as lifestyle, occupation, and family history. The goal is to enable psychologists, psychiatrists, general practitioners, and mental health counselors to identify at-risk individuals early, prioritize interventions, allocate resources efficiently, and improve patient outcomes through proactive support.
 
 ---
 
 ## **Dataset**
 
 - **Source**: [Mental Health Dataset](https://www.kaggle.com/datasets/divaniazzahra/mental-health-dataset)
-- **Sample Size**: 292000 records
+- **Sample Size**: 292374 records
 - **Target Variable**: treatment (binary: needs treatment or not).
-- **Key Features**:
+- **Features**:
   - Timestamp 
   - Gender
   - Country
