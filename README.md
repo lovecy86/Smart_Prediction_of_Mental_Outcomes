@@ -4,17 +4,9 @@
 [Flask and Deployment](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/tree/main/flask_and_deployment)
 ## **Project Overview**
 
-The **Smart Prediction of Mental Health** project aims to create a **Sentiment Analysis Model** to predict mental health outcomes based on lifestyle, personal history, and social factors. By identifying individuals at risk early, healthcare professionals can offer proactive support and intervention.
+### **Problem Statement**:
 
-### **Goal**:
-To build a tool that helps healthcare professionals identify individuals who may need mental health support early, thereby improving patient outcomes.
-
-### **Stakeholders**:
-- **Psychologists**, **Psychiatrists**, **General Practitioners**, and **Mental Health Counselors**: These professionals can use the tool to prioritize interventions, allocate resources, and improve mental health outcomes.
-
-### **Business Question**:
-- **Who is likely to seek mental health treatment?**  
-  The project predicts the likelihood of an individual needing mental health treatment based on factors like lifestyle, occupation, and family history.
+The Smart Prediction of Mental Health project addresses the challenge of late detection of mental health issues, which delays critical interventions and strains healthcare resources. By developing a sentiment analysis model, the project predicts the likelihood of individuals needing mental health treatment based on factors such as lifestyle, occupation, and family history. The goal is to enable psychologists, psychiatrists, general practitioners, and mental health counselors to identify at-risk individuals early, prioritize interventions, allocate resources efficiently, and improve patient outcomes through proactive support.
 
 ---
 
