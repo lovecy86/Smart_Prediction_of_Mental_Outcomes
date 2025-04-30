@@ -1,11 +1,24 @@
 # **Smart Prediction of Mental Health: Sentiment Analysis Model**
+A sentiment analysis model to predict mental health treatment needs based on lifestyle, personal history, and social factors, enabling early intervention for healthcare professionals.
+
 [Modeling Code](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/blob/main/Mental_Health_Prediction_in_colab.ipynb)
 
 [Flask and Deployment](https://github.com/lovecy86/Smart_Prediction_of_Mental_Outcomes/tree/main/flask_and_deployment)
-## **Project Overview**
 
-### **Problem Statement**:
+## **Table of Contents**
+- [Problem Statement](#problem statement)
+Dataset
+Project Steps
+Model Development
+Technologies Used
+Repository Structure
+Installation
+Contributing
+Next Steps
+Authors
+License
 
+## **Problem Statement**:
 The Smart Prediction of Mental Health project addresses the challenge of late detection of mental health issues, which delays critical interventions and strains healthcare resources. By developing a sentiment analysis model, the project predicts the likelihood of individuals needing mental health treatment based on factors such as lifestyle, occupation, and family history. The goal is to enable psychologists, psychiatrists, general practitioners, and mental health counselors to identify at-risk individuals early, prioritize interventions, allocate resources efficiently, and improve patient outcomes through proactive support.
 
 ---
@@ -27,17 +40,7 @@ The Smart Prediction of Mental Health project addresses the challenge of late de
 
 ---
 
-## **Model Development**
-
-### **Data Preprocessing**
-- **Data Cleaning**: 
-  - Handled missing values
-  - checked for outliers
-  - Dropped timestamp column
-  - Deleted duplicates
-- **Feature Engineering**: 
-  - **encoded** categorical variables for Logistic Regression and MLP algorithms.
-  - performed **correlation analysis**  
+*  
 
 ![cleaned dataset](images/cleaned_dataset.png)
 
